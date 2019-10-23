@@ -20,5 +20,5 @@ This section gives a brief overview of how KLEE’s source code is structured:
 - 检查选项：这些选项控制KLEE进行的某些检查。</br>
 - 重置选项：这些选项影响测试用例的重置。</br>
 
-在上述的选项中，代码中详细的介绍了选项下边的设置，这里不再展开。
+在上述的选项中，代码中详细的介绍了选项下边的设置，这里不再展开。</br>
 （3）定义了一个KleeHandler类，包含下边代码所用到的成员函数，包括测试用例的数目，探测到的路径数目，设置解释器等函数。</br>
