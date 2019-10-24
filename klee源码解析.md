@@ -23,20 +23,20 @@ This section gives a brief overview of how KLEE’s source code is structured:
 在上述的选项中，代码中详细的介绍了选项下边的设置，这里不再展开。</br>
 （3）定义了一个KleeHandler类，包含下边代码所用到的成员函数，包括测试用例的数目，探测到的路径数目，设置解释器等函数。接着分别定义了每个成员函数，这些函数如下：</br>
 
-- Kleehandler：创建输出目录（OutputDir or "klee-out-<i>"），
-- ~KleeHandler
-- getInfoStream：得到输入文件信息流
-- getNumTestCases：得到目前为止成功产生的测试用例数目
-- getNumPathsExplored：得到目前为止探测到的路径数目
-- incPathsExplored：探测路径
-- setInterpreter
-- processTestCase
-- getOutputFilename
-- openOutputFile
-- getTestFilename
-- openTestFile
-- loadPathFile
-- getKTestFilesInDir
-- getRunTimeLibraryPath
+- Kleehandler：构造函数，初始化一些成员变量。创建输出目录（OutputDir or "klee-out-\<i\>"），打开warning.txt、messages.txt、info文件。
+- ~KleeHandler：析构函数，释放一些需要释放的成员变量。
+- getInfoStream：得到输入文件信息流。
+- getNumTestCases：得到目前为止成功产生的测试用例数目。
+- getNumPathsExplored：得到目前为止探测到的路径数目。
+- incPathsExplored：探测路径。
+- setInterpreter：设置解释器。分别有setPathWriter、setSymbolicPathWriter。
+- processTestCase：输出描述一个测试用例的所有文件（.ktest,.kquery,.cov,等）
+- getOutputFilename：得到输出文件的路径。其中把路径和文件名添加到系统环境变量中。
+- openOutputFile：打开输出文件。
+- getTestFilename：得到测试文件名。
+- openTestFile：打开测试文件。
+- loadPathFile：加载路径文件。
+- getKTestFilesInDir：得到Ktest文件的路径。
+- getRunTimeLibraryPath：得到运行时库的路径
 
 
