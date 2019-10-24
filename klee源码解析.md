@@ -21,4 +21,22 @@ This section gives a brief overview of how KLEE’s source code is structured:
 - 重置选项：这些选项影响测试用例的重置。</br>
 
 在上述的选项中，代码中详细的介绍了选项下边的设置，这里不再展开。</br>
-（3）定义了一个KleeHandler类，包含下边代码所用到的成员函数，包括测试用例的数目，探测到的路径数目，设置解释器等函数。</br>
+（3）定义了一个KleeHandler类，包含下边代码所用到的成员函数，包括测试用例的数目，探测到的路径数目，设置解释器等函数。接着分别定义了每个成员函数，这些函数如下：</br>
+
+- Kleehandler：创建输出目录（OutputDir or "klee-out-<i>"），
+- ~KleeHandler
+- getInfoStream：得到输入文件信息流
+- getNumTestCases：得到目前为止成功产生的测试用例数目
+- getNumPathsExplored：得到目前为止探测到的路径数目
+- incPathsExplored：探测路径
+- setInterpreter
+- processTestCase
+- getOutputFilename
+- openOutputFile
+- getTestFilename
+- openTestFile
+- loadPathFile
+- getKTestFilesInDir
+- getRunTimeLibraryPath
+
+
