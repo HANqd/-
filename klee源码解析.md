@@ -12,8 +12,17 @@ This section gives a brief overview of how KLEE’s source code is structured:
 - tests/ contains small C programs and LLVM bitcode that is used as a regression test suite for KLEE.
 
 # main.c分析
+__先把大体框架整理出来，一些实现小细节在了解工具工作流程后再细看。__</br>
 （1）程序刚开始用#include引入了一些头文件，这里不再细看。</br>
-（2）接下来声明命名空间，使用namespace。为的是把全局作用域划分为几个部分，不同命名空间中的标志符可以同名而不发生冲突。在命名空间里声明了几个选项，分别如下：</br>
+（2）接下来声明命名空间，使用namespace。为的是把全局作用域划分为几个部分，不同命名空间中的标志符可以同名而不发生冲突。</br>
+看到代码中有很多cl开头的代码，查阅了相关资料，知道这是llvm里命名空间的简写。
+
+```
+cl Namespace - This namespace contains all of the command line option processing machinery.
+It is intentionally a short name to make qualified usage concise.
+```
+
+在命名空间里声明了几个选项，分别如下：</br>
 - 测试用例选项：这些选项选择文件来生成每个测试用例。</br>
 - 启动选项：这些选项影响程序执行的启动方式。</br>
 - 链接选项：这些选项控制链接的库。</br>
@@ -37,6 +46,19 @@ This section gives a brief overview of how KLEE’s source code is structured:
 - openTestFile：打开测试文件。
 - loadPathFile：加载路径文件。
 - getKTestFilesInDir：得到Ktest文件的路径。
-- getRunTimeLibraryPath：得到运行时库的路径
+- getRunTimeLibraryPath：得到运行时库的路径。
 
+（4）接下来是主要驱动函数</br>
+
+- strip：提取字符串。
+- parseArguments：解析参数，解析命令行选项。
+- preparePOSIX：为POSIX做准备工作。
+
+在我们获得系统的真实建模之前，我们要做的就是检查未定义的符号，并警告任何“无法识别的”外部符号和任何明显不安全的外部符号。</br>
+
+- modelledExternals：我们明确支持的符号。
+- dontCareExternals：我们不会警告的符号。
+- dontCareKlee：我们不会用klee-libc警告外部的符号。
+- dontCareUclibc：我们不会用uclibc警告外部的符号。
+- unsafeExternals：我们认为的不安全的符号。
 
