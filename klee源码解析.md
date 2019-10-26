@@ -66,9 +66,9 @@ It is intentionally a short name to make qualified usage concise.
 （7）halt_execution：设置暂停执行。</br>
 （8）stop_forking：设置禁止fork。</br>
 （9）interrupt_handle：中断处理，解释器停止或者程序停止。</br>
-（10）interrupt_handle_watchdog：中断处理看门狗
-（11）halt_via_gdb：通过gdb进行中断
-（12）replaceOrRenameFunction：替换或重命名函数
-（13）createLibCWrapper：创建libc包装器
-（14）linkWithUclibc：和uclibc链接
+（10）interrupt_handle_watchdog：中断处理看门狗</br>
+（11）halt_via_gdb：通过gdb进行中断</br>
+（12）replaceOrRenameFunction：替换或重命名函数</br>
+（13）createLibCWrapper：创建libc包装器</br>
+（14）linkWithUclibc：和uclibc链接</br>
 
