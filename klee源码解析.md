@@ -54,11 +54,21 @@ It is intentionally a short name to make qualified usage concise.
 - parseArguments：解析参数，解析命令行选项。
 - preparePOSIX：为POSIX做准备工作。
 
-在我们获得系统的真实建模之前，我们要做的就是检查未定义的符号，并警告任何“无法识别的”外部符号和任何明显不安全的外部符号。</br>
-
+（5）在我们获得系统的真实建模之前，我们要做的就是检查未定义的符号，并警告任何“无法识别的”外部符号和任何明显不安全的外部符号。</br>
+先对一些符号进行分类：
 - modelledExternals：我们明确支持的符号。
 - dontCareExternals：我们不会警告的符号。
 - dontCareKlee：我们不会用klee-libc警告外部的符号。
 - dontCareUclibc：我们不会用uclibc警告外部的符号。
 - unsafeExternals：我们认为的不安全的符号。
+
+（6）externalsAndGlobalsCheck:检查外部和全局的检查，对上边分类的符号进行检查。</br>
+（7）halt_execution：设置暂停执行。</br>
+（8）stop_forking：设置禁止fork。</br>
+（9）interrupt_handle：中断处理，解释器停止或者程序停止。</br>
+（10）interrupt_handle_watchdog：中断处理看门狗
+（11）halt_via_gdb：通过gdb进行中断
+（12）replaceOrRenameFunction：替换或重命名函数
+（13）createLibCWrapper：创建libc包装器
+（14）linkWithUclibc：和uclibc链接
 
